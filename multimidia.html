@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multimídia | Julio Cesar</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1>Julio Cesar</h1>
+        <p>Estudante de Análise e Desenvolvimento de Sistemas</p>
+
+        <nav aria-label="Menu principal">
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="curriculo.html">Currículo</a></li>
+            <li><a href="formulario.html">Contato</a></li>
+            <li><a href="multimidia.html" aria-current="page">Multimídia</a></li>
+            <li><a href="graficos.html">Gráficos</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section>
+        <h2>Conteúdo multimídia</h2>
+        <div class="media-grid">
+          <article class="media-box">
+            <h3>Vídeo local</h3>
+            <video controls>
+              <source src="midias/video.mp4" type="video/mp4" />
+              Seu navegador não suporta vídeo.
+            </video>
+          </article>
+
+          <article class="media-box">
+            <h3>Áudio local</h3>
+            <audio controls>
+              <source src="midias/audio.mp3" type="audio/mpeg" />
+              Seu navegador não suporta áudio.
+            </audio>
+          </article>
+
+          <article class="media-box">
+            <h3>Vídeo do YouTube</h3>
+            <div class="video-embed">
+              <iframe
+                src="https://www.youtube.com/embed/N4Q4j1oSdUU"
+                title="Vídeo de apresentação"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© Julio Cesar — 2026</p>
+    </footer>
+  </body>
+</html>

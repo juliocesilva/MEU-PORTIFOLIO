@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gráficos | Julio Cesar</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1>Julio Cesar</h1>
+        <p>Estudante de Análise e Desenvolvimento de Sistemas</p>
+
+        <nav aria-label="Menu principal">
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="curriculo.html">Currículo</a></li>
+            <li><a href="formulario.html">Contato</a></li>
+            <li><a href="multimidia.html">Multimídia</a></li>
+            <li><a href="graficos.html" aria-current="page">Gráficos</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="chart-grid">
+      <section>
+        <h2>Canvas</h2>
+        <p>
+          O Canvas permite desenhar elementos diretamente em pixels por meio de JavaScript,
+          sendo muito útil para gráficos dinâmicos e animações.
+        </p>
+        <div class="chart-wrap">
+          <canvas id="meuCanvas" width="700" height="320" aria-label="Gráfico em canvas"></canvas>
+        </div>
+      </section>
+
+      <section>
+        <h2>SVG</h2>
+        <p>
+          O SVG usa formas vetoriais, preservando qualidade visual e permitindo estilização
+          com CSS e manipulação direta dos elementos.
+        </p>
+
+        <div class="chart-wrap">
+          <svg viewBox="0 0 700 320" role="img" aria-label="Exemplo de gráfico em SVG" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="gradBar" x1="0" x2="1">
+                <stop offset="0%" stop-color="#4f9dff" />
+                <stop offset="100%" stop-color="#1f3a5f" />
+              </linearGradient>
+            </defs>
+            <rect x="50" y="90" width="140" height="170" rx="12" fill="url(#gradBar)" />
+            <rect x="230" y="135" width="140" height="125" rx="12" fill="#8bd3ff" />
+            <rect x="410" y="70" width="140" height="190" rx="12" fill="#1f9d7a" />
+            <circle cx="585" cy="120" r="52" fill="#ffb703" />
+            <polygon points="210,260 350,150 490,260" fill="#ef476f" />
+          </svg>
+        </div>
+      </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>© Julio Cesar — 2026</p>
+    </footer>
+
+    <script>
+      const canvas = document.getElementById('meuCanvas');
+      const ctx = canvas.getContext('2d');
+
+      ctx.fillStyle = '#dfeeff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#4f9dff';
+      ctx.fillRect(70, 170, 120, 110);
+
+      ctx.fillStyle = '#1f3a5f';
+      ctx.fillRect(240, 120, 120, 160);
+
+      ctx.fillStyle = '#1f9d7a';
+      ctx.fillRect(410, 90, 120, 190);
+
+      ctx.beginPath();
+      ctx.arc(585, 95, 50, 0, Math.PI * 2);
+      ctx.fillStyle = '#ffb703';
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(230, 240);
+      ctx.lineTo(350, 115);
+      ctx.lineTo(470, 240);
+      ctx.closePath();
+      ctx.fillStyle = '#ef476f';
+      ctx.fill();
+    </script>
+  </body>
+</html>
