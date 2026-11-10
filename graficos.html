@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gráficos | Julio Cesar</title>
     <link rel="stylesheet" href="css/estilos.css" />
+    <script src="js/scripts.js"></script>
   </head>
   <body>
     <header class="site-header">
@@ -21,6 +22,7 @@
             <li><a href="graficos.html" aria-current="page">Gráficos</a></li>
           </ul>
         </nav>
+        <button type="button" id="btn-tema" class="btn-tema" aria-pressed="false">🌙 Tema escuro</button>
       </div>
     </header>
 
@@ -66,35 +68,5 @@
     <footer class="site-footer">
       <p>© Julio Cesar — 2026</p>
     </footer>
-
-    <script>
-      const canvas = document.getElementById('meuCanvas');
-      const ctx = canvas.getContext('2d');
-
-      ctx.fillStyle = '#dfeeff';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = '#4f9dff';
-      ctx.fillRect(70, 170, 120, 110);
-
-      ctx.fillStyle = '#1f3a5f';
-      ctx.fillRect(240, 120, 120, 160);
-
-      ctx.fillStyle = '#1f9d7a';
-      ctx.fillRect(410, 90, 120, 190);
-
-      ctx.beginPath();
-      ctx.arc(585, 95, 50, 0, Math.PI * 2);
-      ctx.fillStyle = '#ffb703';
-      ctx.fill();
-
-      ctx.beginPath();
-      ctx.moveTo(230, 240);
-      ctx.lineTo(350, 115);
-      ctx.lineTo(470, 240);
-      ctx.closePath();
-      ctx.fillStyle = '#ef476f';
-      ctx.fill();
-    </script>
   </body>
 </html>

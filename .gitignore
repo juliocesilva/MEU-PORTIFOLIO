@@ -1,0 +1,22 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+
+# Temporários e logs
+*.log
+*.tmp
+*.bak
+*~
+
+# Compactados (não fazem parte do site)
+*.zip
+*.rar
+*.7z
+
+# Dependências (caso use npm no futuro)
+node_modules/

@@ -10,6 +10,45 @@
   --border: #dfe7f5;
   --success: #1f9d7a;
   --shadow: 0 12px 32px rgba(31, 58, 95, 0.12);
+  --bg-top: #eef4ff;
+  --surface-soft: #f8faff;
+  --surface-th: #eef6ff;
+  --surface-quote: #f7fbff;
+  --surface-chart: #f9fbff;
+  --surface-canvas: #f7faff;
+  --surface-btn2: #edf3ff;
+  --input-bg: #ffffff;
+  --header-1: #1f3a5f;
+  --header-2: #16304c;
+  --btn-end: #1f3a5f;
+  color-scheme: light;
+}
+
+/* Tema escuro: só redefine as variáveis */
+:root[data-theme="dark"] {
+  --bg: #0f1624;
+  --bg-top: #0b1220;
+  --panel: #17202f;
+  --primary: #9cc9ff;
+  --primary-dark: #7fb6f5;
+  --accent: #4f9dff;
+  --accent-2: #8bd3ff;
+  --text: #e5ebf5;
+  --muted: #9aa8bb;
+  --border: #2a374c;
+  --success: #3ccfa5;
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --surface-soft: #1d2839;
+  --surface-th: #1f2b3e;
+  --surface-quote: #1b2535;
+  --surface-chart: #1d2839;
+  --surface-canvas: #1d2839;
+  --surface-btn2: #243248;
+  --input-bg: #101826;
+  --header-1: #16304c;
+  --header-2: #0d1f36;
+  --btn-end: #2563b8;
+  color-scheme: dark;
 }
 * {
   box-sizing: border-box;
@@ -18,7 +57,7 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
-  background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 100%);
+  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg) 100%);
   color: var(--text);
 }
 a {
@@ -51,7 +90,7 @@ svg {
   padding-right: 1rem;
 }
 .site-header {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(135deg, var(--header-1) 0%, var(--header-2) 100%);
   color: #fff;
   padding: 1.2rem 0 0.6rem;
   box-shadow: var(--shadow);
@@ -150,7 +189,7 @@ aside h3 {
 }
 .card,
 .media-box {
-  background: #f8faff;
+  background: var(--surface-soft);
 }
 .card {
   border-radius: 14px;
@@ -172,14 +211,14 @@ td {
   text-align: left;
 }
 th {
-  background: #eef6ff;
+  background: var(--surface-th);
   color: var(--primary);
 }
 blockquote {
   margin: 1rem 0;
   padding: 0.75rem 1rem;
   border-left: 5px solid var(--accent);
-  background: #f7fbff;
+  background: var(--surface-quote);
   color: var(--muted);
   font-style: italic;
 }
@@ -211,7 +250,7 @@ textarea {
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 0.8rem 0.9rem;
-  background: #fff;
+  background: var(--input-bg);
   color: var(--text);
 }
 input:focus,
@@ -255,7 +294,7 @@ textarea {
 button {
   border: none;
   border-radius: 10px;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--btn-end) 100%);
   color: #fff;
   font-weight: 700;
   min-height: 44px;
@@ -269,7 +308,7 @@ button:focus {
   opacity: 0.96;
 }
 .button-secondary {
-  background: #edf3ff;
+  background: var(--surface-btn2);
   color: var(--primary);
   border: 1px solid var(--border);
 }
@@ -325,7 +364,7 @@ legend {
   margin-bottom: 0;
 }
 .chart-wrap {
-  background: #f9fbff;
+  background: var(--surface-chart);
   border-radius: 12px;
   padding: 1rem;
 }
@@ -340,13 +379,28 @@ svg {
   height: auto;
   border: 1px solid var(--border);
   border-radius: 12px;
-  background: #f7faff;
+  background: var(--surface-canvas);
 }
 .site-footer {
   padding: 1.4rem 0 2rem;
   text-align: center;
   color: var(--muted);
 }
+/* ===== CP3: botão de tema ===== */
+.btn-tema {
+  margin: 0.75rem 0 0.5rem;
+  min-height: 40px;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+.btn-tema:hover,
+.btn-tema:focus {
+  background: rgba(255, 255, 255, 0.22);
+}
+
 @media (min-width: 600px) {
   .site-header nav ul {
     flex-direction: row;
