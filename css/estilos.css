@@ -401,6 +401,47 @@ svg {
   background: rgba(255, 255, 255, 0.22);
 }
 
+/* ===== CP3: validação do formulário ===== */
+.erro-campo {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #c62840;
+}
+:root[data-theme="dark"] .erro-campo {
+  color: #ff8fa3;
+}
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-color: #c62840;
+}
+.mensagem-form {
+  margin-top: 1.2rem;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+.mensagem-form[hidden] {
+  display: none;
+}
+.mensagem-form.sucesso {
+  background: rgba(31, 157, 122, 0.14);
+  border-color: var(--success);
+  color: var(--success);
+}
+.mensagem-form.erro {
+  background: rgba(198, 40, 64, 0.12);
+  border-color: #c62840;
+  color: #c62840;
+}
+:root[data-theme="dark"] .mensagem-form.erro {
+  color: #ff8fa3;
+  border-color: #ff8fa3;
+}
+
 @media (min-width: 600px) {
   .site-header nav ul {
     flex-direction: row;

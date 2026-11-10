@@ -93,8 +93,125 @@ function desenharCanvas() {
   ctx.fill();
 }
 
+/* ---------- 3. Formulário de contato: validação com feedback visível ---------- */
+function ancoraDoErro(campo) {
+  // Radios mostram o erro depois do <fieldset>; os demais, depois do próprio campo
+  return campo.type === 'radio' ? campo.closest('fieldset') : campo;
+}
+
+function limparErro(campo) {
+  const ancora = ancoraDoErro(campo);
+  const proximo = ancora.nextElementSibling;
+  if (proximo && proximo.classList.contains('erro-campo')) proximo.remove();
+  campo.removeAttribute('aria-invalid');
+  campo.removeAttribute('aria-describedby');
+}
+
+function mostrarErro(campo, texto) {
+  limparErro(campo);
+  const aviso = document.createElement('span');
+  aviso.className = 'erro-campo';
+  aviso.id = 'erro-' + (campo.name || campo.id);
+  aviso.textContent = texto;
+  ancoraDoErro(campo).insertAdjacentElement('afterend', aviso);
+  campo.setAttribute('aria-invalid', 'true');
+  campo.setAttribute('aria-describedby', aviso.id);
+}
+
+// Devolve o texto do erro do campo ou '' se estiver tudo certo
+function mensagemDeErro(campo) {
+  const v = campo.validity;
+  const valor = campo.value;
+  const ehTexto = ['text', 'textarea', 'email', 'tel', 'url'].includes(campo.type);
+
+  if (v.valueMissing || (campo.required && ehTexto && valor.trim() === '')) {
+    if (campo.type === 'radio') return 'Escolha uma opção.';
+    if (campo.tagName === 'SELECT') return 'Selecione uma opção.';
+    return 'Preencha este campo.';
+  }
+  if (campo.minLength > 0 && valor.length > 0 && valor.length < campo.minLength) {
+    return 'Digite pelo menos ' + campo.minLength + ' caracteres (agora: ' + valor.length + ').';
+  }
+  if (v.typeMismatch) {
+    return campo.type === 'email'
+      ? 'Digite um e-mail válido, como nome@exemplo.com.'
+      : 'Digite um endereço válido, começando com https://';
+  }
+  if (v.patternMismatch) return 'Digite um telefone válido, como 11 99999-9999.';
+  if (v.rangeUnderflow) return 'O valor mínimo é ' + campo.min + '.';
+  if (v.rangeOverflow) return 'O valor máximo é ' + campo.max + '.';
+  if (v.stepMismatch) return 'Use valores em múltiplos de ' + campo.step + '.';
+  if (v.badInput) return 'Valor inválido.';
+  return '';
+}
+
+function iniciarFormulario() {
+  const form = document.getElementById('form-contato');
+  if (!form) return; // só existe em formulario.html
+  const caixa = document.getElementById('mensagem-form');
+
+  // Campos que serão validados (ignora botões e fieldset; radio: só o 1º do grupo)
+  const campos = Array.from(form.elements).filter((campo) => {
+    if (campo.tagName === 'BUTTON' || campo.tagName === 'FIELDSET') return false;
+    if (campo.type === 'radio') return campo === form.elements[campo.name][0];
+    return true;
+  });
+
+  function mostrarMensagem(tipo, texto) {
+    caixa.hidden = false;
+    caixa.className = 'mensagem-form ' + tipo; // 'sucesso' ou 'erro'
+    caixa.textContent = texto;
+  }
+
+  function validarCampo(campo) {
+    const texto = mensagemDeErro(campo);
+    if (texto) mostrarErro(campo, texto);
+    else limparErro(campo);
+    return texto === '';
+  }
+
+  form.addEventListener('submit', (evento) => {
+    evento.preventDefault(); // não recarrega a página
+    let primeiroInvalido = null;
+
+    campos.forEach((campo) => {
+      if (!validarCampo(campo) && !primeiroInvalido) primeiroInvalido = campo;
+    });
+
+    if (primeiroInvalido) {
+      mostrarMensagem('erro', 'Corrija os campos destacados e tente novamente.');
+      primeiroInvalido.focus();
+      return;
+    }
+
+    const primeiroNome = form.elements['nome'].value.trim().split(' ')[0];
+    mostrarMensagem(
+      'sucesso',
+      'Formulário validado com sucesso, ' + primeiroNome + '! ' +
+      '(Demonstração: este site não tem servidor para receber mensagens.)'
+    );
+    form.reset();
+  });
+
+  // Enquanto o campo está com erro, revalida conforme a pessoa corrige
+  form.addEventListener('input', (evento) => {
+    const campo = evento.target;
+    if (campo.getAttribute('aria-invalid') === 'true') validarCampo(campo);
+  });
+  form.addEventListener('change', (evento) => {
+    const campo = evento.target;
+    if (campo.getAttribute('aria-invalid') === 'true') validarCampo(campo);
+  });
+
+  form.addEventListener('reset', () => {
+    campos.forEach(limparErro);
+    caixa.hidden = true;
+  });
+}
+
 /* ---------- Inicialização (quando o HTML terminar de carregar) ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   iniciarBotaoTema();
   desenharCanvas();
+  iniciarFormulario();
 });

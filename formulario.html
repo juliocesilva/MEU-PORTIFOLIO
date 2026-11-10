@@ -31,7 +31,7 @@
         <h2>Formulário de contato</h2>
         <p>Preencha os campos abaixo para entrar em contato comigo sobre projetos, oportunidades ou parcerias.</p>
 
-        <form action="#" method="post">
+        <form id="form-contato" action="#" method="post" novalidate>
           <div class="form-grid">
             <div>
               <label for="nome">Nome completo</label>
@@ -106,6 +106,8 @@
             <button type="submit">Enviar mensagem</button>
             <button type="reset" class="button-secondary">Limpar</button>
           </div>
+
+          <div id="mensagem-form" class="mensagem-form" role="status" aria-live="polite" hidden></div>
         </form>
       </section>
     </main>
