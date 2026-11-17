@@ -442,6 +442,24 @@ textarea[aria-invalid="true"] {
   border-color: #ff8fa3;
 }
 
+/* ===== CP4: link "pular para o conteúdo" (classe Bootstrap visually-hidden-focusable) ===== */
+.skip-link:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1000;
+  padding: 0.7rem 1.1rem;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #0d1b2e;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+main:focus {
+  outline: none;
+}
+
 @media (min-width: 600px) {
   .site-header nav ul {
     flex-direction: row;
