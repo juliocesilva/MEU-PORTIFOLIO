@@ -21,6 +21,9 @@
   --header-1: #1f3a5f;
   --header-2: #16304c;
   --btn-end: #1f3a5f;
+  --btn-start: #2563b8;
+  --success-text: #0b6b50;
+  --focus: #1d4ed8;
   color-scheme: light;
 }
 
@@ -47,7 +50,9 @@
   --input-bg: #101826;
   --header-1: #16304c;
   --header-2: #0d1f36;
-  --btn-end: #2563b8;
+  --btn-end: #1e4f91;
+  --success-text: #3ccfa5;
+  --focus: #ffd166;
   color-scheme: dark;
 }
 * {
@@ -294,7 +299,7 @@ textarea {
 button {
   border: none;
   border-radius: 10px;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--btn-end) 100%);
+  background: linear-gradient(135deg, var(--btn-start) 0%, var(--btn-end) 100%);
   color: #fff;
   font-weight: 700;
   min-height: 44px;
@@ -430,7 +435,7 @@ textarea[aria-invalid="true"] {
 .mensagem-form.sucesso {
   background: rgba(31, 157, 122, 0.14);
   border-color: var(--success);
-  color: var(--success);
+  color: var(--success-text);
 }
 .mensagem-form.erro {
   background: rgba(198, 40, 64, 0.12);
@@ -458,6 +463,35 @@ textarea[aria-invalid="true"] {
 }
 main:focus {
   outline: none;
+}
+
+/* ===== CP4: foco visível para navegação por teclado ===== */
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+.site-header :focus-visible {
+  outline-color: #ffd166;
+}
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ===== CP4: respeita quem prefere menos movimento ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+  .site-header nav a:hover,
+  .site-header nav a:focus {
+    transform: none;
+  }
 }
 
 @media (min-width: 600px) {
