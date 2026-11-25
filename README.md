@@ -2,7 +2,7 @@
 
 Site pessoal (HTML, CSS e JavaScript) do projeto individual de **Desenvolvimento Front-end para Web** — CP3: Git, deploy e JavaScript.
 
-🔗 **Site publicado:** https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/
+🔗 **Site publicado:** https://juliocesilva.github.io/MEU-PORTIFOLIO/
 
 ## Páginas
 
